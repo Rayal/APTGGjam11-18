@@ -17,7 +17,13 @@ public class MovementController : MonoBehaviour {
 	}
 	
 	// FixedUpdate is called regularly, irrespective of framerate.
-	void FixedUpdate () {
+	void FixedUpdate ()
+    {
+        RealTimeMovement();
+    }
+
+    private void RealTimeMovement()
+    {
         float horizontal = Input.GetAxisRaw("Horizontal");
         bool jump = Input.GetAxisRaw("Jump") > 0;
 
@@ -26,5 +32,5 @@ public class MovementController : MonoBehaviour {
         {
             rb.AddForce(new Vector2(0, jumpForce));
         }
-	}
+    }
 }
