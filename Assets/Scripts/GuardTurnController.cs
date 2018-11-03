@@ -31,7 +31,8 @@ public class GuardTurnController : MonoBehaviour {
             }
         }
         else if (GameController.instance.GetPlayMode().Equals(GameController.PlayMode.TURN_BASED)
-            && GameController.instance.GetTurn().Equals(GameController.TurnStatus.PLAYER_TURN))
+            && (GameController.instance.GetTurn().Equals(GameController.TurnStatus.PLAYER_TURN)
+            || GameController.instance.GetTurn().Equals(GameController.TurnStatus.PLAYER_ENEMY_TRANSITION)))
         {
             pursuitController.enabled = false;
         }

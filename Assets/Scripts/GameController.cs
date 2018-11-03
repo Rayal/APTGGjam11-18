@@ -60,9 +60,13 @@ public class GameController : MonoBehaviour {
             turn = TurnStatus.PLAYER_TURN;
         }
 
-        if (turn.Equals(TurnStatus.ENEMY_PLAYER_TRANSITION) || turn.Equals(TurnStatus.PLAYER_ENEMY_TRANSITION))
+        if (turn.Equals(TurnStatus.PLAYER_ENEMY_TRANSITION))
         {
-            StartCoroutine(DelayTwoSecondsThenSuspendPhysics());
+            StartCoroutine(DelayTwoSecondsThenSuspendPhysics(1));
+        }
+        else if (turn.Equals(TurnStatus.ENEMY_PLAYER_TRANSITION))
+        {
+            StartCoroutine(DelayTwoSecondsThenSuspendPhysics(2));
         }
     }
 
@@ -72,10 +76,10 @@ public class GameController : MonoBehaviour {
         Physics2D.autoSimulation = false;
     }
 
-    IEnumerator DelayTwoSecondsThenSuspendPhysics()
+    IEnumerator DelayTwoSecondsThenSuspendPhysics(float time)
     {
-        yield return new WaitForSeconds(1);
-        EndTurn();
+        yield return new WaitForSeconds(time);
         Physics2D.autoSimulation = false;
+        EndTurn();
     }
 }
