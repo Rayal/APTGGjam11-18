@@ -42,3 +42,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Inside House
+    uniqueID: 1286995809
+    locked: 0
+  - name: Outside House
+    uniqueID: 4177418805
+    locked: 0
