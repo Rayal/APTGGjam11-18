@@ -9,9 +9,16 @@ public class GameController : MonoBehaviour {
         TURN_BASED
     }
 
-    private static GameController instance;
+    public enum TurnStatus
+    {
+        PLAYER_TURN,
+        ENEMY_TURN
+    }
 
-    private PlayMode playMode = PlayMode.REAL_TIME;
+    public static GameController instance;
+
+    public PlayMode playMode = PlayMode.REAL_TIME;
+    public TurnStatus turn = TurnStatus.PLAYER_TURN;
 
     // Use this for initialization
     private void Awake () {
@@ -33,5 +40,15 @@ public class GameController : MonoBehaviour {
     public PlayMode GetPlayMode()
     {
         return playMode;
+    }
+
+    public TurnStatus GetTurn()
+    {
+        return turn;
+    }
+
+    public void EndTurn()
+    {
+        turn++;
     }
 }
