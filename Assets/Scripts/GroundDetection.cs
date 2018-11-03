@@ -7,12 +7,14 @@ public class GroundDetection : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        collidedBodies++;
+        if (!collision.CompareTag("Untangible"))
+            collidedBodies++;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        collidedBodies--;
+        if (!collision.CompareTag("Untangible"))
+            collidedBodies--;
     }
 
     public bool IsGrounded()

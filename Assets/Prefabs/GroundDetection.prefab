@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114044744391387856}
   m_Layer: 0
   m_Name: GroundDetection
-  m_TagString: Untagged
+  m_TagString: Untangible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

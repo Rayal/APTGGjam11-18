@@ -12,7 +12,9 @@ public class GameController : MonoBehaviour {
     public enum TurnStatus
     {
         PLAYER_TURN,
-        ENEMY_TURN
+        PLAYER_ENEMY_TRANSITION,
+        ENEMY_TURN,
+        ENEMY_PLAYER_TRANSITION
     }
 
     public static GameController instance;
@@ -50,5 +52,22 @@ public class GameController : MonoBehaviour {
     public void EndTurn()
     {
         turn++;
+        if (turn.Equals(TurnStatus.ENEMY_PLAYER_TRANSITION) || turn.Equals(TurnStatus.PLAYER_ENEMY_TRANSITION))
+        {
+            StartCoroutine(DelayTwoSecondsThenSuspendPhysics());
+        }
+    }
+
+    public void PlayerSeen()
+    {
+        playMode = PlayMode.TURN_BASED;
+        Physics2D.autoSimulation = false;
+    }
+
+    IEnumerator DelayTwoSecondsThenSuspendPhysics()
+    {
+        yield return new WaitForSeconds(1);
+        EndTurn();
+        Physics2D.autoSimulation = false;
     }
 }
