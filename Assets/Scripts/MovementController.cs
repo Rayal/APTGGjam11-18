@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ public class MovementController : MonoBehaviour {
 
     private Rigidbody2D rb;
     private GroundDetection gd;
+    private bool moving = false;
 
 	// Use this for initialization
 	void Start () {
@@ -21,9 +23,26 @@ public class MovementController : MonoBehaviour {
 	void FixedUpdate ()
     {
         if (GameController.instance.GetPlayMode().Equals(GameController.PlayMode.REAL_TIME))
+        {
             RealTimeMovement();
+        }
         else
+        {
+            if (moving)
+            {
+                EndTurnOnStop();
+            }
             TurnBasedMovement();
+        }
+    }
+
+    private void EndTurnOnStop()
+    {
+        if (rb.velocity.Equals(Vector2.zero))
+        {
+            GameController.instance.EndTurn();
+            moving = false;
+        }
     }
 
     private void RealTimeMovement()
@@ -40,18 +59,21 @@ public class MovementController : MonoBehaviour {
 
     private void TurnBasedMovement()
     {
-        Debug.Log("Turn based.");
         if (IsMyTurn())
         {
-            Debug.Log("My Turn");
             float horizontal = Input.GetAxisRaw("Horizontal");
-            Debug.Log(string.Format("{0}", horizontal));
             rb.AddForce(new Vector2(horizontal * dash, 0));
 
             if (horizontal != 0f)
             {
-                GameController.instance.EndTurn();
-                Debug.Log("My turn ended.");
+                moving = true;
+            }
+        }
+        else
+        {
+            if (rb.velocity.magnitude < maxSpeed * 2 / 3)
+            {
+                rb.velocity = Vector2.zero;
             }
         }
     }
