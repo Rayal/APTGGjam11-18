@@ -51,7 +51,15 @@ public class GameController : MonoBehaviour {
 
     public void EndTurn()
     {
-        turn++;
+        if (turn < TurnStatus.ENEMY_PLAYER_TRANSITION)
+        {
+            turn++;
+        }
+        else
+        {
+            turn = TurnStatus.PLAYER_TURN;
+        }
+
         if (turn.Equals(TurnStatus.ENEMY_PLAYER_TRANSITION) || turn.Equals(TurnStatus.PLAYER_ENEMY_TRANSITION))
         {
             StartCoroutine(DelayTwoSecondsThenSuspendPhysics());
