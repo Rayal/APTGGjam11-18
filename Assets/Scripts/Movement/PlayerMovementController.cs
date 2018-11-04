@@ -34,18 +34,6 @@ public class PlayerMovementController : MonoBehaviour {
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         Moving.SetVelocity(rb, horizontal * maxSpeed);
-        if (horizontal != 0f)
-        {
-            Debug.Log("Playing...");
-            aus.clip = runningClip;
-            aus.loop = true;
-            if (!aus.isPlaying)
-                aus.Play();
-        }
-        else
-        {
-            aus.Pause();
-        }
         bool jump = Input.GetAxisRaw("Jump") > 0;
         //Around HERE we set the walking/running animation.
         if (jump && gd.IsGrounded())

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class door : MonoBehaviour {
+public class Door : MonoBehaviour {
 
     public Sprite closedDoor;
     public Sprite openDoor;
@@ -23,7 +23,6 @@ public class door : MonoBehaviour {
         if(collision.gameObject.CompareTag("Player"))
         {
             sr.sprite = openDoor;
-            print(collision.gameObject.name);
             transform.Translate(Vector2.right * 1.3f);
             Destroy(GetComponent<BoxCollider2D>());
         }
