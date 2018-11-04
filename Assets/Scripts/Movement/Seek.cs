@@ -14,6 +14,7 @@ public class Seek : MovementActionController{
         }
         else
         {
+            //HERE set the walk/run animation (ENEMY)
             Moving.SetVelocity(rb, 0f);
         }
 	}

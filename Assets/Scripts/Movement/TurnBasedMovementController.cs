@@ -31,11 +31,13 @@ public class TurnBasedMovementController : MonoBehaviour {
             if (Input.GetAxisRaw("Fire1") != 0f)
             {
                 Dash(mouseDirection * dash);
+                //HERE Jump Animation
                 EndTurn();
             }
             else if (Input.GetAxisRaw("Fire2") != 0f)
             {
                 Shoot(mouseDirection);
+                //HERE Shootin animation
                 EndTurn();
             }
         }

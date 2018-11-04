@@ -58,6 +58,7 @@ public class GuardTurnController : MonoBehaviour {
                     && GameController.instance.GetTurn().Equals(GameController.TurnStatus.ENEMY_TURN))
         {
             RaycastHit2D hit = ScanForPlayer();
+            // HERE Enemy shooting.
             if (hit.collider.CompareTag("Player"))
             {
                 GameController.instance.PlayerHit();
