@@ -36,7 +36,10 @@ public class PlayerMovementController : MonoBehaviour {
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         Moving.SetVelocity(rb, horizontal * maxSpeed);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5d096e5078234236f6a472d63192368df7bded63
         bool jump = Input.GetAxisRaw("Jump") > 0;
         //Around HERE we set the walking/running animation.
         
