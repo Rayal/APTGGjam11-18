@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -36,7 +37,11 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0
+            || GameObject.FindGameObjectsWithTag("Player").Length == 0)
+        {
+            Application.Quit();
+        }
 	}
 
     public PlayMode GetPlayMode()
@@ -68,6 +73,11 @@ public class GameController : MonoBehaviour {
         {
             StartCoroutine(DelayTwoSecondsThenSuspendPhysics(2));
         }
+    }
+
+    public void PlayerHit()
+    {
+        Destroy(GameObject.FindGameObjectWithTag("Player"));
     }
 
     public void PlayerSeen()

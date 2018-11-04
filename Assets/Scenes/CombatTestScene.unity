@@ -205,7 +205,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 489811808}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.86, y: -0.6, z: -0.09389562}
+  m_LocalPosition: {x: 16.23, y: 6.38, z: -0.09389562}
   m_LocalScale: {x: 0.386, y: 5.914, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -274,7 +274,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 8.950012
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -536,11 +536,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114051716133545332, guid: 45b643e77948b1344bf2c0391e01006d,
-        type: 2}
-      propertyPath: patrollPoints.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4314021431168804, guid: 45b643e77948b1344bf2c0391e01006d, type: 2}
       propertyPath: m_LocalPosition.x
       value: 3.97
@@ -581,51 +576,6 @@ Prefab:
     - target: {fileID: 1088059222846418, guid: 45b643e77948b1344bf2c0391e01006d, type: 2}
       propertyPath: m_Name
       value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 114051716133545332, guid: 45b643e77948b1344bf2c0391e01006d,
-        type: 2}
-      propertyPath: waitTime
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114051716133545332, guid: 45b643e77948b1344bf2c0391e01006d,
-        type: 2}
-      propertyPath: patrollSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114051716133545332, guid: 45b643e77948b1344bf2c0391e01006d,
-        type: 2}
-      propertyPath: patrollPoints.Array.data[0].x
-      value: -10
-      objectReference: {fileID: 0}
-    - target: {fileID: 114051716133545332, guid: 45b643e77948b1344bf2c0391e01006d,
-        type: 2}
-      propertyPath: patrollPoints.Array.data[1].x
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114051716133545332, guid: 45b643e77948b1344bf2c0391e01006d,
-        type: 2}
-      propertyPath: patrollPoints.Array.data[0].y
-      value: -1.92
-      objectReference: {fileID: 0}
-    - target: {fileID: 114051716133545332, guid: 45b643e77948b1344bf2c0391e01006d,
-        type: 2}
-      propertyPath: patrollPoints.Array.data[1].y
-      value: -1.92
-      objectReference: {fileID: 0}
-    - target: {fileID: 114411137226020512, guid: 45b643e77948b1344bf2c0391e01006d,
-        type: 2}
-      propertyPath: targetRadius
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114261499566496756, guid: 45b643e77948b1344bf2c0391e01006d,
-        type: 2}
-      propertyPath: targetRadius
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114261499566496756, guid: 45b643e77948b1344bf2c0391e01006d,
-        type: 2}
-      propertyPath: pursuitSpeed
-      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45b643e77948b1344bf2c0391e01006d, type: 2}

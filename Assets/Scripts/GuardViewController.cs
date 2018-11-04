@@ -43,7 +43,6 @@ public class GuardViewController : MonoBehaviour {
             rayCastDirection,
             Mathf.Infinity,
             ~(LayerMask.GetMask("Enemy")|LayerMask.GetMask("Ignore Raycast")));
-        Debug.DrawRay(transform.position, player.transform.position - transform.position);
         if (hit.collider != null)
         {
             if (hit.collider.CompareTag("Player"))

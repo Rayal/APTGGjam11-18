@@ -32,7 +32,6 @@ public class GuardRealTimeMovementController : MonoBehaviour {
             if (Mathf.Abs(transform.position.x - patrollPoints[currentPOIIndex].x) < 0.5f && !waiting)
             {
                 waiting = true;
-                Debug.Log(string.Format("{0}", currentPOIIndex));
                 if (++currentPOIIndex >= patrollPoints.Length)
                 {
                     currentPOIIndex = 0;

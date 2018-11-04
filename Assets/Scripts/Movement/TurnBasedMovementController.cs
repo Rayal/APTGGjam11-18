@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,17 +26,29 @@ public class TurnBasedMovementController : MonoBehaviour {
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 mouseDirection = (mousePosition - transform.position).normalized;
 
+            Debug.DrawRay(transform.position, mouseDirection, Color.red);
+
             if (Input.GetAxisRaw("Fire1") != 0f)
             {
-                Debug.Log("Dashed");
                 Dash(mouseDirection * dash);
                 EndTurn();
             }
             else if (Input.GetAxisRaw("Fire2") != 0f)
             {
-                Debug.Log("Fired");
+                Shoot(mouseDirection);
                 EndTurn();
             }
+        }
+    }
+
+    private void Shoot(Vector2 mouseDirection)
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, mouseDirection, Mathf.Infinity, LayerMask.GetMask("Enemy"));
+        Debug.Log(hit.collider.name);
+
+        if(hit.collider != null)
+        {
+            Destroy(hit.collider.gameObject);
         }
     }
 
