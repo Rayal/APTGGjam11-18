@@ -11,15 +11,22 @@ public class PlayerMovementController : MonoBehaviour {
 
     private Rigidbody2D rb;
     private GroundDetection gd;
+<<<<<<< HEAD
     private AudioSource aus;
     private Animator anim;
+=======
+
+>>>>>>> 38a11b34d16b88ee39eaae4b15bff738070613b3
     
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
         gd = GetComponentInChildren<GroundDetection>();
+<<<<<<< HEAD
         aus = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
+=======
+>>>>>>> 38a11b34d16b88ee39eaae4b15bff738070613b3
 	}
 	
 	// FixedUpdate is called regularly, irrespective of framerate.

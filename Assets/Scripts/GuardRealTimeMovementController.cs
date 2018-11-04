@@ -7,6 +7,7 @@ public class GuardRealTimeMovementController : MonoBehaviour {
     public float waitTime;
     public float patrollSpeed;
 
+    private SpriteRenderer sr;
     private Rigidbody2D rb;
     private Seek seek;
     public int currentPOIIndex;
@@ -16,17 +17,26 @@ public class GuardRealTimeMovementController : MonoBehaviour {
 	void Start () {
         seek = GetComponent<Seek>();
         rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        Vector2 scale = transform.localScale;
+        /*Vector2 scale = transform.localScale;
         if (rb.velocity.x < 0)
-            scale.x = -1;
+            scale.x *= -Mathf.Abs(scale.x);
         else if (rb.velocity.x > 0)
-            scale.x = 1;
+            scale.x = Mathf.Abs(scale.x);
         transform.localScale = scale;
-
+        */
+        if(rb.velocity.x > 0f)
+        {
+            sr.flipX = true;
+        }
+        else if (rb.velocity.x < 0f)
+        {
+            sr.flipX = false;
+        }
         if (GameController.instance.GetPlayMode().Equals(GameController.PlayMode.REAL_TIME))
         {
             if (Mathf.Abs(transform.position.x - patrollPoints[currentPOIIndex].x) < 0.5f && !waiting)

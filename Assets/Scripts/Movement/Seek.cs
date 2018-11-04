@@ -5,11 +5,15 @@ using UnityEngine;
 public class Seek : MovementActionController{
     public float targetRadius;
 <<<<<<< HEAD
+<<<<<<< HEAD
     public AudioClip seekingSound;
 
     private AudioSource aus;
 =======
     public AudioClip runningClip;
+=======
+ /*   public AudioClip runningClip;
+>>>>>>> 38a11b34d16b88ee39eaae4b15bff738070613b3
 
     private AudioSource audioSource;
 >>>>>>> 5d096e5078234236f6a472d63192368df7bded63
@@ -23,27 +27,28 @@ public class Seek : MovementActionController{
         audioSource = GetComponent<AudioSource>();
 >>>>>>> 5d096e5078234236f6a472d63192368df7bded63
     }
-
+*/
     // Update is called once per frame
     public override void FixedUpdate () {
         float difference = pointOfInterest.x - transform.position.x;
         if (Mathf.Abs(difference) > targetRadius)
         {
-            audioSource.clip = runningClip;
+/*            audioSource.clip = runningClip;
             audioSource.loop = true;
             if (!audioSource.isPlaying)
             {
                 audioSource.Play();
             }
-
+            */
             Moving.SetVelocity(rb,
                 difference > 0 ? maxSpeed : -maxSpeed);
         }
         else
         {
+            /*
             if (audioSource.isPlaying) {
                 audioSource.Pause();
-            }
+            }*/
             //HERE set the walk/run animation (ENEMY)
            
             Moving.SetVelocity(rb, 0f);

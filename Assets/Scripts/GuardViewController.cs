@@ -35,7 +35,6 @@ public class GuardViewController : MonoBehaviour {
         Vector2 rayCastDirection = player.transform.position - transform.position;
         if (transform.lossyScale.x < 0 ^ rayCastDirection.x < 0)
         {
-            Debug.Log("Guard facing wrong direction");
             return;
         }
         RaycastHit2D hit = Physics2D.Raycast(
