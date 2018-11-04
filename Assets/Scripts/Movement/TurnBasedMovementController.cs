@@ -9,6 +9,7 @@ public class TurnBasedMovementController : MonoBehaviour {
     LineRenderer lr;
     Rigidbody2D rb;
 
+    private Animator anim;
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
@@ -17,6 +18,7 @@ public class TurnBasedMovementController : MonoBehaviour {
         lr.endWidth = 0.1f;
         lr.startColor = Color.white;
         lr.endColor = Color.white;
+        anim = GetComponent<Animator>();
 	}
 
     private void FixedUpdate()
@@ -27,7 +29,10 @@ public class TurnBasedMovementController : MonoBehaviour {
             Vector2 mouseDirection = (mousePosition - transform.position).normalized;
 
             Debug.DrawRay(transform.position, mouseDirection, Color.red);
-
+            if (anim.GetBool("Shoot"))
+            {
+                anim.SetBool("Shoot", false);
+            }
             if (Input.GetAxisRaw("Fire1") != 0f)
             {
                 Dash(mouseDirection * dash);
@@ -37,7 +42,8 @@ public class TurnBasedMovementController : MonoBehaviour {
             else if (Input.GetAxisRaw("Fire2") != 0f)
             {
                 Shoot(mouseDirection);
-                //HERE Shootin animation
+                anim.SetBool("Shoot", true);
+                //atm
                 EndTurn();
             }
         }

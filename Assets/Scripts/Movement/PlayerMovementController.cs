@@ -12,12 +12,14 @@ public class PlayerMovementController : MonoBehaviour {
     private Rigidbody2D rb;
     private GroundDetection gd;
     private AudioSource aus;
+    private Animator anim;
     
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
         gd = GetComponentInChildren<GroundDetection>();
         aus = GetComponent<AudioSource>();
+        anim = GetComponent<Animator>();
 	}
 	
 	// FixedUpdate is called regularly, irrespective of framerate.
@@ -34,24 +36,26 @@ public class PlayerMovementController : MonoBehaviour {
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         Moving.SetVelocity(rb, horizontal * maxSpeed);
-        if (horizontal != 0f)
-        {
-            Debug.Log("Playing...");
-            aus.clip = runningClip;
-            aus.loop = true;
-            if (!aus.isPlaying)
-                aus.Play();
-        }
-        else
-        {
-            aus.Pause();
-        }
+
         bool jump = Input.GetAxisRaw("Jump") > 0;
         //Around HERE we set the walking/running animation.
+        
+        anim.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
         if (jump && gd.IsGrounded())
         {
             //HERE we set the jumping animation.
+            //anim.SetBool("Jumping", true);
             rb.AddForce(new Vector2(0, jumpForce));
         }
+        else {
+            //anim.SetBool("Jumping", false);
+        }
+
+        anim.SetBool("Jumping", !gd.IsGrounded());
+
+        /*Animator ainm;
+        ainm.SetBool("jumping@, "true);
+        ainm.SetFloat("speed", 12)
+        */
     }
 }
